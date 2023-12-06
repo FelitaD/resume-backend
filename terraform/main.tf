@@ -15,9 +15,6 @@ resource "google_cloudbuild_trigger" "resume-backend-trigger" {
   }
   filename      = "terraform/cloudbuild-cloud-run-api.yaml"
   ignored_files = [".gitignore", "terraform/*"]
-  substitutions = {
-    PROJECT_ID= var.project
-}
 }
 
 

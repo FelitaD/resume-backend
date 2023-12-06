@@ -1,6 +1,6 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'europe-west9-docker.pkg.dev/$PROJECT-ID/cloud-run-resume/cloud-run-backend-api:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'europe-west9-docker.pkg.dev/$PROJECT_ID/cloud-run-resume/cloud-run-backend-api:$COMMIT_SHA', '.']
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "europe-west9-docker.pkg.dev/$PROJECT-ID/cloud-run-resume/cloud-run-backend-api:$COMMIT_SHA"]
+    args: ["push", "europe-west9-docker.pkg.dev/$PROJECT_ID/cloud-run-resume/cloud-run-backend-api:$COMMIT_SHA"]
 logsBucket: "gs://cloud-build-logs-resume"
