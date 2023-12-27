@@ -1,6 +1,0 @@
-steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'europe-west9-docker.pkg.dev/$PROJECT_ID/cloud-run-resume/cloud-run-backend-api', './cloud-run-api/']
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "europe-west9-docker.pkg.dev/$PROJECT_ID/cloud-run-resume/cloud-run-backend-api"]
-logsBucket: "gs://cloud-build-logs-resume"

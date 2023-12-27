@@ -1,0 +1,6 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'europe-west9-docker.pkg.dev/$PROJECT_ID/api-registry/api_image', './api/']
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "europe-west9-docker.pkg.dev/$PROJECT_ID/api-registry/api_image"]
+logsBucket: "gs://cloud-build-logs-resume"
