@@ -1,0 +1,40 @@
+swagger: '2.0'
+info:
+  title: Cloud Endpoints + Cloud Run
+  description: Sample API on Cloud Endpoints with a Cloud Run backend
+  version: 1.0.0
+host: gateway-jq4t4jadfq-od.a.run.app
+schemes:
+  - https
+produces:
+  - application/json
+x-google-backend:
+  address: https://api-jq4t4jadfq-od.a.run.app
+  protocol: h2
+paths:
+  /hello:
+    get:
+      summary: Say hello
+      operationId: getHello
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /update_visitor_count:
+    post:
+      summary: Update visitor count
+      operationId: postUpdateVisitorCount
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: visitor_count
+          type: integer
+          required: true
+          description: Visitor count.
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
