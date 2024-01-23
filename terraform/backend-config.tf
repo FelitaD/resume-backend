@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket  = "terraform-state-resume"
+    bucket  = "terraform-state-resume-backend"
     prefix  = "state"
   }  
   required_version = ">= 0.12.7"  
