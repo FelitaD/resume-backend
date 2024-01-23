@@ -29,10 +29,15 @@ paths:
         - application/json
       parameters:
         - in: body
-          name: visitor_count
-          type: integer
-          required: true
+          name: visitor
           description: Visitor count.
+          schema:
+            type: object
+            required: 
+              - visitor_count
+            properties:
+              visitor_count:
+                type: string
       responses:
         '200':
           description: A successful response
