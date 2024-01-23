@@ -119,7 +119,7 @@ ENTRYPOINT ["/env_start_proxy.py"]
 EOF
 
 NEW_IMAGE="${IMAGE_REPOSITORY}/endpoints-runtime-serverless:${ESP_FULL_VERSION}-${SERVICE}-${CONFIG_ID}"
-gcloud builds submit --tag "${NEW_IMAGE}" . --project="${PROJECT}"
+gcloud builds submit --tag "${NEW_IMAGE}" . --project="${PROJECT}" --verbosity=debug
 )
 
 # Delete the temporary directory we created earlier.
