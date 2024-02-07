@@ -1,6 +1,6 @@
 # Back-end
 
-Endpoints solution
-Replaces api gateway with cloud endpoints
+Cloud Functions solution
+Replaces cloud run with cloud function
 
 ![diagram](diagram.png)
