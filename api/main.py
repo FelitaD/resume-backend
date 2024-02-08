@@ -1,37 +1,42 @@
-import os
+#!/usr/bin/env python3
 
-from flask import Flask, request
-from flask_cors import CORS
+import functions_framework
+from flask import jsonify
 from google.cloud import datastore
 
-app = Flask(__name__)
-CORS(app)
+PROJECT = 'resume-404711'
 
-def create_datastore_client(project_id):
-    """Create client for Firestore in Datastore mode."""
-    return datastore.Client(project_id)
+@functions_framework.http
+def update_visitor_count(request):
+    if request.method == "OPTIONS":
+        # Allows GET requests from any origin with the Content-Type
+        # header and caches preflight response for an 3600s
+        headers = {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": ["GET", "POST"],
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Max-Age": "3600",
+        }
 
-@app.route("/hello", methods=['GET'])
-def hello():
-    """Say hello."""
-    if request.method == 'GET':
-        name = os.environ.get("NAME", "World")
-        return f"Hello {name}!"
-
-@app.route("/update_visitor_count", methods=['POST'])
-def update_visitor_count():
-    """Update visitors count in Firestore in Datastore mode."""
-    if request.method == 'POST':
-        client = create_datastore_client('resume-404711')
-        visitor_count = int(request.form['visitor_count'])
-        key = client.key('visitors', 5634161670881280)
-        visitors = client.get(key)
-        new_count = visitors['count'] + visitor_count
+        return ("", 204, headers)
+    
+    if request.method == "GET" or request.method == "POST":
+        # Connect to Firestore in datastore mode
+        client = datastore.Client(project=PROJECT)
+        entity_key = client.key('visitors', 5634161670881280)
+        # Get current visitor count and increment it
+        visitors = client.get(entity_key)
+        new_count = visitors['count'] + 1 
+        # Put new value in database
         visitors.update(
             {'count': new_count}
         )
         client.put(visitors)
-        return f"Successfully added a visitor, {visitors.key}"
-
-if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+        # Return response
+        response = jsonify({'count': new_count})
+        response.headers.set('Access-Control-Allow-Origin', '*')
+        response.headers.set('Access-Control-Allow-Methods', 'GET, POST')
+        return response
+    
+    else:
+        return "Method not allowed ", 401
