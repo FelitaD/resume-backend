@@ -12,8 +12,6 @@ module "functions" {
 # }
 
 
-# # API backend
-
 # # Create Artifact repository to store API image
 
 # resource "google_artifact_registry_repository" "default" {
