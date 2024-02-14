@@ -18,7 +18,7 @@ resource "google_storage_bucket_object" "object" {
 
 resource "google_cloudfunctions2_function" "default" {
   name        = "function-v2"
-  location    = "europe-west2"
+  location    = "europe-west1"
   description = "Increment Firestore visitor count"
 
   build_config {
