@@ -1,6 +1,6 @@
 resource "google_api_gateway_api" "default" {
   provider = google-beta
-  api_id = "resume-api"
+  api_id = "api"
 }
 
 resource "google_api_gateway_api_config" "default" {
