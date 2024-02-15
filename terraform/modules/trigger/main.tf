@@ -1,4 +1,5 @@
-resource "google_cloudbuild_trigger" "backend-infra-trigger" {
+resource "google_cloudbuild_trigger" "default" {
+  name = "backend-infra-trigger"
   github {
     owner = "FelitaD"
     name  = "resume-backend"
