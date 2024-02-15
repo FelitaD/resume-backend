@@ -1,4 +1,4 @@
-module "trigger" {
+module "backend-infra-trigger" {
   source  = "../../modules/trigger"
 }
 
