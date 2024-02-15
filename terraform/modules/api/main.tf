@@ -23,4 +23,5 @@ resource "google_api_gateway_gateway" "default" {
   provider = google-beta
   api_config = google_api_gateway_api_config.default.id
   gateway_id = "resume-gateway"
+  region = "europe-west1"
 }
