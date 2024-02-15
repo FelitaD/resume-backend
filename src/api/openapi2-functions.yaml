@@ -14,7 +14,7 @@ paths:
       summary: Increment visitor count
       operationId: update_visitor_count
       x-google-backend:
-        address: https://europe-west9-resume-404711.cloudfunctions.net/update_visitor_count
+        address: https://europe-west1-resume-404711.cloudfunctions.net/function-v2
       responses:
         '200':
           description: A successful response
