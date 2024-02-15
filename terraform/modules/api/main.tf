@@ -10,7 +10,7 @@ resource "google_api_gateway_api_config" "default" {
 
   openapi_documents {
     document {
-      path = "openapi2-functions.yaml"
+      path = "spec.yaml"
       contents = filebase64("../../../src/api/openapi2-functions.yaml")
     }
   }
